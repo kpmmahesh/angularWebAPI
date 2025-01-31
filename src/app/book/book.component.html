@@ -1,0 +1,61 @@
+<div class="container">
+    <form [formGroup]="bookform">
+        <div class="mb-3 row">
+            <div class="formGroup">
+                <label for="bookid" class="form-label">Bookid</label>
+                <input type="text" class="form-control" id="bookid" name="bookid" placeholder="bookid"
+                    formControlName="bookid">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="formGroup">
+                <label for="bookname" class="form-label">Bookname</label>
+                <input type="text" class="form-control" id="bookname" name="bookname" placeholder="bookname" required
+                    formControlName="bookname" #bname>
+            </div>
+            
+        </div>
+        <div class="mb-3 row">
+            <div class="formGroup">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" class="form-control" id="author" name="author" placeholder="author"
+                    formControlName="author" required>
+                    <span class="help-block" >please enter the author Name</span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="formGroup">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" class="form-control" id="available" name="available" placeholder="available"
+                    formControlName="available" required>
+                    <span class="help-block" >please enter available status</span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <button type="button" (click)="Add()" [ngClass]="{ 'btn-warning':!bookform.valid, 'btn-success':bookform.valid }"  [disabled]="!bookform.valid">Add to grid</button>
+            <button type="button" (click)="save()" [disabled]="!bookform.valid">save</button>
+            <button type="button" (click)="get()" >get</button>
+            <button type="button" (click)="get1()" >get1</button>
+            <button type="button" (click)="save1()"  [disabled]="!bookform.valid">save1</button>
+        </div>
+        <table class="table table-bordered">
+
+            <tr>
+                <th>Bookid</th>
+                <th>BookName</th>
+                <th>Author</th>
+                <th>Available</th>
+            </tr>
+            
+                <tr *ngFor="let obj1 of myBooks">
+                    <td>{{obj1.bookid}}</td>
+                    <td>{{obj1.bookname}}</td>
+                    <td>{{obj1.author}}</td>
+                    <td>{{obj1.available}}</td>
+                </tr>
+            
+        </table>
+
+
+    </form>
+</div>
